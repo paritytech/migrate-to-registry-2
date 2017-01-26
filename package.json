@@ -20,6 +20,8 @@
     "node": ">=7"
   },
   "dependencies": {
+    "co": "^4.6.0",
+    "@parity/parity.js": "^0.3.24"
   },
   "devDependencies": {
     "husky": "^0.13.1",

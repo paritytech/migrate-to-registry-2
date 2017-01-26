@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "name": "migrate-to-registry-2",
+  "version": "0.1.0",
+  "description": "A script to migrate the Registry data to v2.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "test": "exit 0",
+    "prepush": "npm run lint && npm test"
+  },
+  "keywords": ["parity", "registry", "smart contracts", "ethereum"],
+  "author": "Ethcore Team <admin@ethcore.io>",
+  "maintainers": [
+    "Jannis R <mail@jannisr.de>"
+  ],
+  "license": "GPL-3.0",
+  "repository": "ethcore/migrate-to-registry-2",
+  "engine": {
+    "node": ">=7"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "husky": "^0.13.1",
+    "standard": "^8.6.0"
+  }
+}

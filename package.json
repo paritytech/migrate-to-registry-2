@@ -9,7 +9,12 @@
     "test": "exit 0",
     "prepush": "npm run lint && npm test"
   },
-  "keywords": ["parity", "registry", "smart contracts", "ethereum"],
+  "keywords": [
+    "parity",
+    "registry",
+    "smart contracts",
+    "ethereum"
+  ],
   "author": "Ethcore Team <admin@ethcore.io>",
   "maintainers": [
     "Jannis R <mail@jannisr.de>"
@@ -20,8 +25,9 @@
     "node": ">=7"
   },
   "dependencies": {
+    "@parity/parity.js": "^0.3.24",
     "co": "^4.6.0",
-    "@parity/parity.js": "^0.3.24"
+    "p-reduce": "^1.0.0"
   },
   "devDependencies": {
     "husky": "^0.13.1",

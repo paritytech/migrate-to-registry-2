@@ -1,5 +1,7 @@
 # [Parity](https://ethcore.io/parity.html) [`Registry.sol`](https://github.com/ethcore/contracts/blob/b6f982b8ac5d47fe5d37f8bc6714f3e6149d8a50/Registry.sol) migration
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ethcore/migrate-to-registry-2.svg)](https://greenkeeper.io/)
+
 **A script to migrate the Registry data to v2.**
 
 [![Join the chat at https://gitter.im/ethcore/parity][gitter-image]][gitter-url] [![GPLv3][license-image]][license-url]

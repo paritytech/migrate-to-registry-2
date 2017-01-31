@@ -10,11 +10,11 @@ const abi = require('./old-abi.json')
 
 co.wrap(function* () {
   const network = yield api.parity.netChain()
-  console.info('chain:', network)
+  console.error('chain:', network)
   const block = yield api.eth.blockNumber()
-  console.info('current block:', +block)
+  console.error('current block:', +block)
   const address = yield api.parity.registryAddress()
-  console.info('registry address:', address)
+  console.error('registry address:', address)
 
   const filterId = yield api.eth.newFilter({
     fromBlock: 0, toBlock: 'latest', address

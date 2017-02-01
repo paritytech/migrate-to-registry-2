@@ -2,18 +2,11 @@
 
 const co = require('co')
 const reduce = require('p-reduce')
-const digestRegistryEvents = require('./digest-registry-events')
-const api = require('./api')
+const digestRegistryEvents = require('./lib/digest-registry-events')
+const api = require('./lib/api')
 const abi = require('./old-abi.json')
 
-co.wrap(function* () {
-  const network = yield api.parity.netChain()
-  console.error('chain:', network)
-  const block = yield api.eth.blockNumber()
-  console.error('current block:', +block)
-  const address = yield api.parity.registryAddress()
-  console.error('registry address:', address)
-
+const collect = co.wrap(function* (address) {
   const filterId = yield api.eth.newFilter({
     fromBlock: 0, toBlock: 'latest', address
   })
@@ -26,10 +19,8 @@ co.wrap(function* () {
   const data = yield reduce(parsed, digestRegistryEvents(api.util, registry), {
     names: {}, reverses: {}, proposedReverses: {}
   })
-  process.stdout.write(JSON.stringify(data) + '\n')
-  process.exit(0)
-})()
-.catch((err) => {
-  console.error(err)
-  process.exit(1)
+
+  return data
 })
+
+module.exports = collect

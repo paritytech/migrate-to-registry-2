@@ -11,6 +11,7 @@ const waitForConfirmations = require('./lib/wait-for-confirmations')
 const abi = JSON.parse(fs.readFileSync(path.join(__dirname, 'contracts/SimpleRegistry.abi'), {encoding: 'utf8'}))
 const reserve = abi.find((item) => item.name === 'reserve')
 const setData = abi.find((item) => item.name === 'setData')
+const transfer = abi.find((item) => item.name === 'transfer')
 
 const migrate = co.wrap(function* (registryAddress, registryOwner, data) {
   const {names} = data // todo: reverses, proposedReverses
@@ -20,7 +21,7 @@ const migrate = co.wrap(function* (registryAddress, registryOwner, data) {
   console.info('fee is', fromWei(fee).toNumber(), 'ETH')
 
   for (let nameHash in names) {
-    const {data} = names[nameHash] // todo: owner
+    const {data, owner} = names[nameHash]
 
     const tx1 = yield postToContract(registryOwner, registryAddress, reserve, [nameHash], fee)
     yield waitForConfirmations(tx1)
@@ -33,6 +34,10 @@ const migrate = co.wrap(function* (registryAddress, registryOwner, data) {
       yield waitForConfirmations(tx)
       console.info('\t', key, '->', value, '–', tx)
     }
+
+    const tx2 = yield postToContract(registryOwner, registryAddress, transfer, [nameHash, owner])
+    yield waitForConfirmations(tx2)
+    console.info('transferred', nameHash, '–', tx2)
   }
 })
 

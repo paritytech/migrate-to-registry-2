@@ -29,7 +29,8 @@
   "dependencies": {
     "@parity/parity.js": "^0.3.24",
     "co": "^4.6.0",
-    "p-reduce": "^1.0.0"
+    "p-reduce": "^1.0.0",
+    "p-wait-for": "^1.0.0"
   },
   "devDependencies": {
     "husky": "^0.13.1",

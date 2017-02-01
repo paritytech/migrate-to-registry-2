@@ -9,6 +9,11 @@
 [license-image]: https://img.shields.io/badge/license-GPL%20v3-green.svg
 [license-url]: https://www.gnu.org/licenses/gpl-3.0.en.html
 
+## Caveats
+
+- the new registry address & owner are hardcoded right now
+- it doesn't migrate reverses yet
+
 ## Installation
 
 You need a running & synced [Parity](https://ethcore.io/parity.html) at `localhost:8545`. Run with ` --jsonrpc-apis eth,parity` to enable the necessary RPCs.
@@ -24,7 +29,7 @@ npm install --production
 To collect all the data to be migrated:
 
 ```shell
-node index.js
+./bin/collect
 ```
 
 It will print JSON to stdout that looks like this:
@@ -58,4 +63,10 @@ It will print JSON to stdout that looks like this:
     "0x009D7053Fb15023F7090a15e52Eb71DF2d0a0f37": "0x1720680fc45940d6c1892e83e6b916986d068fc83e59caec592238237bd80410"
   }
 }
+```
+
+To apply this data to the new registry:
+
+```shell
+./bin/collect | ./bin/migrate
 ```

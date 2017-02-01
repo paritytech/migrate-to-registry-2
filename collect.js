@@ -1,11 +1,9 @@
 'use strict'
 
-const API = require('@parity/parity.js').Api
 const co = require('co')
 const reduce = require('p-reduce')
 const digestRegistryEvents = require('./digest-registry-events')
-
-const api = new API(new API.Transport.Http('http://localhost:8545'))
+const api = require('./api')
 const abi = require('./old-abi.json')
 
 co.wrap(function* () {

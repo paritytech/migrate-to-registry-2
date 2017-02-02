@@ -8,7 +8,7 @@ const {fromWei} = require('@parity/parity.js').Api.util
 const postToContract = require('./lib/post-to-contract')
 const waitForConfirmations = require('./lib/wait-for-confirmations')
 
-const abi = JSON.parse(fs.readFileSync(path.join(__dirname, 'contracts/SimpleRegistry.abi'), {encoding: 'utf8'}))
+const abi = JSON.parse(fs.readFileSync(path.join(__dirname, 'contracts/SimpleRegistry.sol:SimpleRegistry.abi'), {encoding: 'utf8'}))
 const reserve = abi.find((item) => item.name === 'reserve')
 const setData = abi.find((item) => item.name === 'setData')
 const transfer = abi.find((item) => item.name === 'transfer')

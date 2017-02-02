@@ -8,7 +8,7 @@
     "lint": "standard",
     "test": "exit 0",
     "get-contract": "curl --fail -L 'https://raw.githubusercontent.com/ethcore/contracts/master/SimpleRegistry.sol' > contracts/SimpleRegistry.sol",
-    "compile": "solcjs --abi contracts/SimpleRegistry.sol -o contracts",
+    "compile": "solcjs --abi contracts/SimpleRegistry.sol",
     "prepush": "npm run lint && npm test && npm run get-contract && npm run compile"
   },
   "keywords": [
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "husky": "^0.13.1",
-    "solc": "^0.4.8",
+    "solc": "^0.4.9",
     "standard": "^8.6.0"
   }
 }

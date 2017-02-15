@@ -10,6 +10,7 @@ const waitForConfirmations = require('./lib/wait-for-confirmations')
 
 const abi = JSON.parse(fs.readFileSync(path.join(__dirname, 'contracts/SimpleRegistry.sol:SimpleRegistry.abi'), {encoding: 'utf8'}))
 const reserve = abi.find((item) => item.name === 'reserve')
+const setAddress = abi.find((item) => item.name === 'setAddress')
 const setData = abi.find((item) => item.name === 'setData')
 const transfer = abi.find((item) => item.name === 'transfer')
 
@@ -30,7 +31,12 @@ const migrate = co.wrap(function* (registryAddress, registryOwner, data) {
     for (let key in data) {
       const value = data[key]
 
-      const tx = yield postToContract(registryOwner, registryAddress, setData, [nameHash, key, value])
+      let tx
+      if (key.toUpperCase() === 'A') {
+        tx = yield postToContract(registryOwner, registryAddress, setAddress, [nameHash, key, value])
+      } else {
+        tx = yield postToContract(registryOwner, registryAddress, setData, [nameHash, key, value])
+      }
       yield waitForConfirmations(tx)
       console.info('\t', key, '->', value, '–', tx)
     }

@@ -4,6 +4,18 @@
   "version": "0.1.0",
   "description": "A script to migrate the Registry data to v2.",
   "main": "index.js",
+  "bin": {
+    "collect-from-old-registry": "./bin/collect",
+    "migrate-to-new-registry": "./bin/migrate"
+  },
+  "files": [
+    "bin/*",
+    "contracts/*",
+    "lib/*",
+    "collect.js",
+    "migrate.js",
+    "old-abi.json"
+  ],
   "scripts": {
     "lint": "standard",
     "test": "./bin/collect | node test/collect.js | tap-spec",
@@ -29,8 +41,10 @@
   "dependencies": {
     "@parity/parity.js": "^0.3.24",
     "co": "^4.6.0",
+    "fetch-ponyfill": "^3.0.2",
     "p-reduce": "^1.0.0",
-    "p-wait-for": "^1.0.0"
+    "p-wait-for": "^1.0.0",
+    "stream-sink": "^2.0.0"
   },
   "devDependencies": {
     "husky": "^0.13.1",

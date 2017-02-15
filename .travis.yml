@@ -9,4 +9,3 @@ script:
   - npm run lint
   - npm run get-contract
   - npm run compile
-  - npm test

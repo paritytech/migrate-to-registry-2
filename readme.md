@@ -11,8 +11,7 @@
 
 ## Caveats
 
-- the new registry address & owner are hardcoded right now
-- it doesn't migrate reverses yet
+- it doesn't migrate unconfirmed reverses yet
 
 ## Installation
 
@@ -68,5 +67,7 @@ It will print JSON to stdout that looks like this:
 To apply this data to the new registry:
 
 ```shell
-./bin/collect | ./bin/migrate
+./bin/collect | ./bin/migrate <address of new registry> <owner address of new registry>
 ```
+
+Note that this script expects the registry to be deployed already. Also, you should set the `fee` to 0 to save ETH.

@@ -1,13 +1,23 @@
 #!/usr/bin/env node
 'use strict'
 
+const {isAddressValid} = require('@parity/parity.js').Api.util
 const co = require('co')
 const sink = require('stream-sink')
 
 const migrate = require('../migrate')
 
-const address = '0x05BC2C0f2D182F5401046924C27542727CBB406E'
-const owner = '0x00D189b71E5b42a88aa3e83173D4a6926e665336'
+const argv = process.argv.slice(2)
+
+const [address, owner] = argv
+if (!isAddressValid(address)) {
+  process.stderr.write(`Registry address is invalid: ${address}.\n`)
+  process.exit(1)
+}
+if (!isAddressValid(owner)) {
+  process.stderr.write(`Registry owner is invalid: ${owner}.\n`)
+  process.exit(1)
+}
 
 const readStdin = () =>
   process.stdin.pipe(sink()).then((data) => data)

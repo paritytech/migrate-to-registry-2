@@ -39,7 +39,7 @@
     "node": ">=7"
   },
   "dependencies": {
-    "@parity/parity.js": "^0.3.24",
+    "@parity/parity.js": "^1.7.2",
     "chalk": "^1.1.3",
     "co": "^4.6.0",
     "fetch-ponyfill": "^4.0.0",

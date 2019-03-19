@@ -45,7 +45,7 @@
     "fetch-ponyfill": "^4.0.0",
     "figures": "^2.0.0",
     "p-reduce": "^1.0.0",
-    "p-wait-for": "^1.0.0",
+    "p-wait-for": "^3.0.0",
     "stream-sink": "^2.0.0"
   },
   "devDependencies": {
